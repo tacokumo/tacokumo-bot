@@ -26,7 +26,7 @@ jobs:
     - name: Run tests
       run: make test
 
-    - name: Build admin binary
+    - name: Build binary
       run: make build
     
     - name: golangci-lint
