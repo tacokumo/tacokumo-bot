@@ -1,0 +1,33 @@
+{
+    "display_information": {
+        "name": "tacokumo-bot"
+    },
+    "features": {
+        "bot_user": {
+            "display_name": "tacokumo-bot",
+            "always_online": false
+        }
+    },
+    "oauth_config": {
+        "scopes": {
+            "bot": [
+                "app_mentions:read",
+                "channels:history",
+                "chat:write"
+            ]
+        }
+    },
+    "settings": {
+        "event_subscriptions": {
+            "bot_events": [
+                "message.channels"
+            ]
+        },
+        "interactivity": {
+            "is_enabled": true
+        },
+        "org_deploy_enabled": false,
+        "socket_mode_enabled": true,
+        "token_rotation_enabled": false
+    }
+}
