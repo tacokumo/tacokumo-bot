@@ -9,7 +9,7 @@ COPY ./main.go ./
 COPY ./help_handler.go ./
 COPY ./hello_handler.go ./
 COPY ./message_router.go  ./
-RUN CGO_ENABLED=0 go build -o /tacokumo-bot ./tacokumo-bot
+RUN CGO_ENABLED=0 go build -o /tacokumo-bot .
 
 FROM scratch
 COPY --from=builder /tacokumo-bot /tacokumo-bot
