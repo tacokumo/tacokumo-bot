@@ -12,4 +12,5 @@ COPY ./message_router.go  ./
 RUN CGO_ENABLED=0 go build -o /tacokumo-bot ./tacokumo-bot
 
 FROM scratch
+COPY --from=builder /tacokumo-bot /tacokumo-bot
 CMD ["/tacokumo-bot"]
