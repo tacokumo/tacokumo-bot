@@ -6,6 +6,7 @@ COPY ./go.sum ./
 RUN go mod download
 
 COPY ./main.go ./
+COPY ./bot.go ./
 COPY ./help_handler.go ./
 COPY ./hello_handler.go ./
 COPY ./message_router.go  ./
