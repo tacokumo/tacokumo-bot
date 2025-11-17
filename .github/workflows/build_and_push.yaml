@@ -9,8 +9,6 @@ on:
 
 jobs:
   docker:
-    permissions:
-      packages: write
     strategy:
       matrix:
         include:
@@ -22,8 +20,18 @@ jobs:
           suffix: "-arm"
     runs-on: ${{ matrix.os }}
     steps:
+      - uses: actions/create-github-app-token@v2
+        id: app-token
+        with:
+          # required
+          app-id: ${{ secrets.TOKEN_APP_ID }}
+          private-key: ${{ secrets.TOKEN_APP_PRIVATE_KEY }}
+
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          persist-credentials: false
 
       - name: Docker meta
         id: meta
@@ -40,7 +48,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ steps.app-token.outputs.token }}
 
       - name: Build and push
         uses: docker/build-push-action@v6
